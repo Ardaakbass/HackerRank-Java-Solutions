@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    /*
+     * Complete the 'utopianTree' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER n as parameter.
+     */
+    public static int utopianTree(int n) {
+        int height = 1; // The tree starts at 1 meter height
+
+        for (int i = 1; i <= n; i++) {
+            // Check if the cycle number is even or odd
+            if (i % 2 == 0) {
+                // Even cycle (Summer): The tree grows by 1 meter
+                height += 1;
+            } else {
+                // Odd cycle (Spring): The tree doubles in height
+                height *= 2;
+            }
+        }
+        
+        return height;
+    }
+
+    // Main method for testing (Optional but good for GitHub)
+    public static void main(String[] args) {
+        // Test cases
+        System.out.println(utopianTree(0)); // Output: 1
+        System.out.println(utopianTree(1)); // Output: 2
+        System.out.println(utopianTree(4)); // Output: 7
+    }
+}
