@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+}
+
+public class Solution {
+
+    /*
+     * Function: preOrder
+     * Description: Traverses the binary tree in Preorder (Root -> Left -> Right).
+     * @param root: The root node of the tree.
+     */
+    public static void preOrder(Node root) {
+        // Base Case: If the node is null, stop recursion.
+        if (root == null) {
+            return;
+        }
+        
+        // 1. Visit the Root (Print data)
+        // Use print() instead of println() to keep output on the same line.
+        System.out.print(root.data + " ");
+        
+        // 2. Traverse Left Subtree
+        preOrder(root.left);
+        
+        // 3. Traverse Right Subtree
+        preOrder(root.right);
+    }
+
+    // Main method is handled by HackerRank usually, 
+    // but this is the logic block required.
+}
