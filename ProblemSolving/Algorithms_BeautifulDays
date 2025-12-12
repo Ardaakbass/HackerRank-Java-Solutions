@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    /*
+     * Function: beautifulDays
+     * Description: Counts the number of "beautiful days" in a given range.
+     * Logic: A day is beautiful if |day - reverse(day)| is divisible by k.
+     */
+    public static int beautifulDays(int i, int j, int k) {
+        int beautifulDayCount = 0;
+
+        // Iterate through each day in the range [i, j]
+        for (int day = i; day <= j; day++) {
+            
+            // --- Logic to Reverse the Number ---
+            int reverse = 0;
+            int temp = day; // Create a copy to preserve original 'day' value
+            
+            while (temp != 0) {
+                int digit = temp % 10;          // Get last digit
+                reverse = reverse * 10 + digit; // Append digit to reversed number
+                temp = temp / 10;               // Remove last digit
+            }
+            
+            // --- Check "Beautiful" Condition ---
+            // Calculate absolute difference and check divisibility by k
+            if (Math.abs(day - reverse) % k == 0) {
+                beautifulDayCount++;
+            }
+        }
+        
+        return beautifulDayCount;
+    }
+
+    public static void main(String[] args) {
+        // Test Case
+        // Range: 20 to 23, Divisor: 6
+        System.out.println(beautifulDays(20, 23, 6)); // Expected Output: 2
+    }
+}
