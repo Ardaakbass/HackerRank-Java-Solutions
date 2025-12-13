@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner input = new Scanner(System.in);
+        int T = input.nextInt();
+        
+        // Loop for each test case
+        while(T-- > 0){
+            int n = input.nextInt();
+            
+            if(isPrime(n)){
+                System.out.println("Prime");
+            } else {
+                System.out.println("Not prime");
+            }
+        }
+        input.close();
+    }
+    
+    /**
+     * Checks if a number is Prime with O(sqrt(n)) time complexity.
+     * @param n The number to check
+     * @return true if prime, false otherwise
+     */
+    public static boolean isPrime(int n){
+        // 1 is not prime
+        if(n == 1) return false;
+        
+        // 2 is the only even prime number
+        if(n == 2) return true;
+        
+        // Algorithm: Check divisors from 2 up to square root of n.
+        // If n is divisible by any 'i', it is NOT prime.
+        for(int i = 2; i*i <= n; i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        
+        // If the loop completes without finding a divisor, the number is prime.
+        return true; 
+    }
+}
